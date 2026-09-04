@@ -1,3 +1,17 @@
 import { projects } from '../../data/portfolio';
-const Visual = ({ index }) => index === 0 ? <div className="dine-browser"><div className="browser-top"><b>quickdine</b><span>Home&nbsp;&nbsp; Restaurants&nbsp;&nbsp; Orders</span><i /></div><div className="dine-content"><div><small>DELIVERED TO YOUR DOOR</small><strong>Good food.<br /><em>Great mood.</em></strong><button>Order now →</button></div><div className="food-circle">🍜</div></div></div> : <div className="sport-screen"><div className="sport-logo">SPORT<span>FLEX</span></div><div className="sport-heading">MOVE.<br /><em>PLAY.</em><br />WIN.</div><div className="sport-ball">●</div><div className="sport-lines" /></div>;
-export default function Projects() { return <section id="work" className="work section"><div className="section-heading"><p className="section-label">02 / SELECTED WORK</p><p>Selected projects that bring ideas to life.</p></div>{projects.map((p, index) => <article className={`project ${index ? 'project-sports' : 'project-dine'}`} key={p.name}><div className="project-visual"><Visual index={index} /></div><div className="project-info"><div><p className="project-num">{p.number}</p><h3>{p.name}</h3><p>{p.description}</p></div><div className="project-meta"><span>{p.stack}</span><div><a href={p.github} target="_blank">GitHub ↗</a><a href={p.demo} target="_blank">Live demo ↗</a></div></div></div></article>)}</section>; }
+
+export default function Projects() {
+  return <section id="work" className="work section">
+    <div className="section-heading"><p className="section-label">02 / SELECTED WORK</p><p>Selected projects that bring ideas to life.</p></div>
+    <div className="project-grid">
+      {projects.map(project => <article className="project" key={project.name}>
+        <p className="project-num">{project.number}</p>
+        <p className="project-type">WEB APPLICATION</p>
+        <h3>{project.name}</h3>
+        <p className="project-description">{project.description}</p>
+        <p className="project-stack">{project.stack}</p>
+        <div className="project-actions"><a className="project-button" href={project.github} target="_blank" rel="noreferrer">View GitHub <span>↗</span></a><a className="project-button" href={project.demo} target="_blank" rel="noreferrer">Live demo <span>↗</span></a></div>
+      </article>)}
+    </div>
+  </section>;
+}
