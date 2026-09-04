@@ -2,22 +2,25 @@
 
 /* Single-colour professional blue theme */
 :root { --blue: #0b3a75; --blue-deep: #082d5c; --white: #ffffff; }
-body { background: var(--blue); color: var(--white); }
+body { background: var(--blue); color: var(--white); -webkit-font-smoothing: antialiased; }
 .noise { display: none; }
-.nav-wrap { position: relative; border-bottom: 1px solid rgba(255,255,255,.22); }
+.nav-wrap { position: relative; border-bottom: 1px solid rgba(255,255,255,.16); }
 .logo, nav a, .nav-contact, .text-link, .line-link, .project-meta a, .contact-footer a { color: var(--white); }
 .logo span, .nav-contact span, .text-link span, .line-link span { color: var(--white); }
 nav a:after { background: var(--white); }
 .nav-contact, .text-link, .line-link { border-color: rgba(255,255,255,.7); }
-.hero { min-height: 680px; padding-top: 70px; }
+.hero { min-height: 720px; padding-top: 70px; isolation: isolate; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: #0b3a75 url('/assets/teja-architecture-background.png') center right / cover no-repeat; opacity: .4; }
+.hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, #0b3a75 0%, rgba(11,58,117,.96) 35%, rgba(11,58,117,.55) 74%, rgba(11,58,117,.32) 100%); }
+.hero-copy { max-width: 730px; }
 .eyebrow span { background: var(--white); }
 .hero h1, .about h2, .contact h2 { letter-spacing: -.06em; }
 .intro { color: rgba(255,255,255,.8); }
-.button { font-size: 12px; padding: 20px 24px; gap: 32px; border: 1px solid var(--white); }
+.button { font-size: 12px; padding: 20px 24px; gap: 32px; border: 1px solid var(--white); box-shadow: 5px 5px 0 rgba(255,255,255,.18); }
 .button-dark, .button-light { background: var(--white); color: var(--blue); }
 .button:hover { background: transparent; color: var(--white); transform: translate(-3px,-3px); }
 .hero-art { display: none; }
-.about, .credentials, .contact { background: var(--blue); color: var(--white); border-top: 1px solid rgba(255,255,255,.22); }
+.about, .credentials, .contact { background: var(--blue); color: var(--white); border-top: 1px solid rgba(255,255,255,.16); }
 .about { padding-top: 115px; padding-bottom: 115px; }
 .about-text, .section-label, .section-heading > p:last-child { color: rgba(255,255,255,.78); }
 .skills { border-color: rgba(255,255,255,.25); }
@@ -25,7 +28,7 @@ nav a:after { background: var(--white); }
 .work { padding-top: 115px; padding-bottom: 115px; }
 .section-heading { margin-bottom: 50px; }
 .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.project { margin: 0; min-height: 430px; display: flex; flex-direction: column; padding: 34px; border: 1px solid rgba(255,255,255,.36); transition: background .25s, transform .25s; }
+.project { margin: 0; min-height: 430px; display: flex; flex-direction: column; padding: 34px; border: 1px solid rgba(255,255,255,.3); box-shadow: inset 0 1px 0 rgba(255,255,255,.1); transition: background .25s, transform .25s, border-color .25s; }
 .project:hover { background: rgba(255,255,255,.08); transform: translateY(-5px); }
 .project-num, .project-type, .project-stack { font: 10px var(--mono); letter-spacing: .1em; }
 .project-num { color: var(--white); margin: 0 0 34px; }
@@ -34,7 +37,7 @@ nav a:after { background: var(--white); }
 .project-description { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.8); max-width: 390px; margin: 0; }
 .project-stack { margin: auto 0 21px; color: rgba(255,255,255,.68); }
 .project-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.project-button { color: var(--blue); background: var(--white); text-decoration: none; text-transform: uppercase; font: 11px var(--mono); letter-spacing: .06em; padding: 15px 16px; min-width: 150px; display: inline-flex; justify-content: space-between; align-items: center; transition: all .2s; }
+.project-button { color: var(--blue); background: var(--white); text-decoration: none; text-transform: uppercase; font: 11px var(--mono); letter-spacing: .06em; padding: 16px 17px; min-width: 158px; display: inline-flex; justify-content: space-between; align-items: center; transition: all .2s; }
 .project-button:hover { background: transparent; color: var(--white); outline: 1px solid var(--white); }
 .credentials { padding-top: 105px; padding-bottom: 110px; }
 .credential-list { margin-top: 45px; }
@@ -44,4 +47,5 @@ nav a:after { background: var(--white); }
 .contact { padding-top: 105px; }
 .contact-footer { border-color: rgba(255,255,255,.35); }
 footer { background: var(--blue); color: var(--white); border-top: 1px solid rgba(255,255,255,.22); }
+@media (min-width: 701px) { .credentials, .contact { position: relative; } .credentials::before, .contact::before { content: ''; position: absolute; width: 36vw; height: 1px; top: 0; right: 5.5vw; background: rgba(255,255,255,.25); } }
 @media (max-width: 700px) { .project-grid { grid-template-columns: 1fr; } .project { min-height: 370px; padding: 25px; } .hero { min-height: 600px; } }
